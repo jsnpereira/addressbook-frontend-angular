@@ -1,0 +1,30 @@
+
+<section class="login-card">
+  <h1>Login for Address book</h1>
+  <form class="form-section" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <section class="item-form-section">
+      <label class="item-label">Username</label>
+      <input type="text" (keyup)="updateField()" placeholder="your-mail@mail.com" formControlName="email"/>
+      <section class="alert-message">
+        <label *ngIf="checkUsernameField()">
+         Type username field is required
+        </label>
+      </section>
+    </section>
+    <section class="item-form-section">
+      <label class="item-label">Password</label>
+      <input type="password" (keyup)="updateField()" placeholder="your Password" formControlName="password"/>
+      <section class="alert-message">
+          <label *ngIf="checkPasswordsField()">
+            Type the password field is required
+          </label>
+          <label *ngIf="msgError && loginForm.valid">
+                {{msgError}}
+           </label>
+      </section>
+    </section>
+    <button type="submit" [ngClass]="{'button-disabled': loginForm.invalid}" [disabled]="loginForm.invalid" >Login</button>
+    <app-user-not-registered></app-user-not-registered>
+  </form>
+</section>
+

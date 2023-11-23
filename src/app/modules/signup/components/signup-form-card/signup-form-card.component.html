@@ -1,0 +1,35 @@
+<section class="signup-card">
+  <h1>Sign up</h1>
+  <form class="form-section" [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" >
+    <section class="item-form-section">
+      <label class="item-label">Name</label>
+      <input type="text" placeholder="your name" formControlName="name"/>
+      <section class="alert-message">
+        <label *ngIf="checkNameField()">
+          {{getNameErrorMessage()}}
+        </label>
+      </section>
+    </section>
+    <section class="item-form-section">
+      <label class="item-label">E-mail</label>
+      <input type="email" placeholder="your-mail@mail.com" formControlName="email"/>
+      <section class="alert-message">
+        <label *ngIf="checkEmailField()" >
+            {{getEmailErrorMessage()}}
+        </label>
+      </section>
+    </section>
+    <section class="item-form-section">
+      <label class="item-label">Password</label>
+      <input type="password" placeholder="your Password" formControlName="password"/>
+      <section class="alert-message">
+        <label *ngIf="checkPasswordField()" >
+          {{getPasswordErrorMessage()}}
+        </label>
+      </section>
+    </section>
+    <button type="submit" [ngClass]="{'button-disabled': signUpForm.invalid}"   [disabled]="signUpForm.invalid" >Create new user</button>
+  </form>
+  <app-user-has-registered></app-user-has-registered>
+</section>
+

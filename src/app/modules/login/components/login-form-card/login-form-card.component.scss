@@ -1,0 +1,72 @@
+@import "/src/dist/scss/variables.scss";
+
+:host {
+  .login-card{
+    margin-top: 30%;
+    width: 450px;
+    height: 500px;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    box-shadow: 5px 8px 12px #888888;
+
+    & button {
+      background-color: $button-color-background;
+      color: $button-font-color;
+      font-size: 16px;
+      font-weight: 400;
+      border: none;
+      border-radius: 4px;
+      height: 55px;
+    }
+
+    .button-disabled {
+      background-color: $button-disabled-color-background;
+    }
+  }
+
+  h1{
+    font-size: 28px;
+    text-align: center;
+    padding-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .form-section{
+    //padding: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item-form-section{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & input {
+      padding: 5px 12px;
+      height: 55px;
+      border: none;
+      border-radius: 4px;
+      background-color: $third-color;
+      font-color: $fourth-color;
+      font-size: 16px;
+    }
+
+    & .item-label{
+      text-align: left;
+      font-size: 16px;
+    }
+
+    .alert-message{
+      color: $danger;
+      font-size: 12px;
+      height: 12px;
+    }
+  }
+}
+
