@@ -1,9 +1,12 @@
 :host{
  .contact-list-container{
    margin: 40px auto;
-   background-color: orange;
+   padding-bottom: 60px;
    width: 70%;
-   display: flex;
-   flex-wrap: wrap;
+   display: grid;
+   grid-auto-flow: row;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+   gap: 30px;
  }
 }

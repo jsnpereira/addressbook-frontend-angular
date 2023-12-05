@@ -10,20 +10,17 @@ import {Contact} from "../../../../core/models/contact";
 })
 export class ContactListComponent implements OnInit {
   private data: any;
-  contactsList: any = ['test 1','test 2','test 3'];
+  contactsList: any;
 
   constructor(private dataService: DataService, private contactService: ContactService) { }
 
   ngOnInit(): void {
-    // this.data = this.dataService.getDataClient();
-    //  console.log('Token: '+this.data.token)
-    //   this.contactService.getAllContactsByUsername(this.data.token).forEach((contact) => {
-    //     console.log(contact);
-    //     // var dataContact: Contact;
-    //     // dataContact.id = contact.
-    //
-    //     this.contactsList = contact.data;
-    //     console.log(this.contactsList)
-    //   });
+    this.data = this.dataService.getDataClient();
+     console.log('Token: '+this.data.token)
+      this.contactService.getAllContactsByUsername(this.data.token).forEach((contact) => {
+        console.log(contact);
+        this.contactsList = contact.data;
+        console.log(this.contactsList)
+      });
   }
 }
