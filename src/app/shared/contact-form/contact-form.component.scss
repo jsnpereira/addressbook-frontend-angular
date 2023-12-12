@@ -1,10 +1,10 @@
 @import "/src/dist/scss/variables.scss";
 
 :host{
-  .signup-card{
+  .contact-form-card{
     margin-top: 10%;
     width: 450px;
-    height: 650px;
+    height: 700px;
     background-color: $primary-color;
     display: flex;
     flex-direction: column;
@@ -12,9 +12,15 @@
     padding: 40px;
     box-shadow: 5px 8px 12px #888888;
 
-    & button {
-      background-color: $button-color-background;
-      color: $button-font-color;
+    .button-group {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .buttons{
+      width: 100%;
       font-size: 16px;
       font-weight: 400;
       border: none;
@@ -22,8 +28,18 @@
       height: 55px;
     }
 
+    .button-save {
+        background-color: $button-color-background;
+        color: $button-font-color;
+    }
+
     .button-disabled {
       background-color: $button-disabled-color-background;
+    }
+
+    .button-cancel:hover{
+      background-color: $button-background-cancel-hover;
+      color: $button-font-cancel-hover;
     }
   }
 
@@ -68,4 +84,5 @@
       height: 12px;
     }
   }
+
 }

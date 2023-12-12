@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'contact-card',
@@ -7,9 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ContactCardComponent implements OnInit {
   @Input() contact: any;
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
-
 }

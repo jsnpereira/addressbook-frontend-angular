@@ -6,10 +6,15 @@ $secondary-color: #ed7e3a; ///orange
 $third-color: #efefef; //light gray
 $fourth-color: #858788;  //dark gray
 $fifth-color : #8e4c23; // dark orange
+$sixth-color: #787878;
 
 $button-disabled-color-background: $fifth-color;
 $button-color-background: $secondary-color;
 $button-font-color: $primary-color;
+
+//cancel button
+$button-font-cancel-hover: $primary-color;
+$button-background-cancel-hover: $sixth-color;
 
 $input-color-background: $third-color;
 $input-font-color:$fourth-color;
