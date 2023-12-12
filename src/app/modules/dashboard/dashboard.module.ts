@@ -4,6 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ContactCardComponent } from './components/contact-card/contact-card.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { SearchContactComponent } from './components/search-contact/search-contact.component';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -15,7 +16,8 @@ import { SearchContactComponent } from './components/search-contact/search-conta
     SearchContactComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class DashboardModule { }

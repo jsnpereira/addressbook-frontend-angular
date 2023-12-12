@@ -1,0 +1,51 @@
+<section class="contact-form-card">
+    <h1>{{getContactTitleForm()}}</h1>
+    <form class="form-section" [formGroup]="contactForm" (ngSubmit)="submitContactDate()" >
+        <section class="item-form-section" >
+            <label class="item-label">Name</label>
+            <input type="text" placeholder="Insert name" formControlName="name"  *ngIf="checkEditForm()" />
+            <input type="text" placeholder="Insert name" formControlName="name"  *ngIf="checkNewForm()" />
+            <section class="alert-message">
+                                <label *ngIf="checkNameField()">
+                                    {{getNameErrorMessage()}}
+                                </label>
+            </section>
+        </section>
+        <section class="item-form-section">
+            <label class="item-label">E-mail</label>
+            <input type="email" placeholder="Insert the email" formControlName="email" *ngIf="checkEditForm()"/>
+            <input type="email" placeholder="Insert the email" formControlName="email" *ngIf="checkNewForm()" />
+            <section class="alert-message">
+                                <label *ngIf="checkEmailField()" >
+                                    {{getEmailErrorMessage()}}
+                                </label>
+            </section>
+        </section>
+        <section class="item-form-section">
+            <label class="item-label">Phone</label>
+            <input type="text" placeholder="Insert the Phone" formControlName="phone" *ngIf="checkEditForm()"/>
+            <input type="text" placeholder="Insert the Phone" formControlName="phone" *ngIf="checkNewForm()"/>
+            <section class="alert-message">
+                                <label *ngIf="checkPhoneField()" >
+                                    {{getPhoneErrorMessage()}}
+                                </label>
+            </section>
+        </section>
+        <section class="item-form-section">
+            <label class="item-label">City</label>
+            <input type="text" placeholder="Insert the city" formControlName="city"  *ngIf="checkEditForm()"/>
+            <input type="text" placeholder="Insert the city" formControlName="city" *ngIf="checkNewForm()"/>
+            <section class="alert-message">
+                                <label *ngIf="checkCityField()" >
+                                    {{getCityErrorMessage()}}
+                                </label>
+            </section>
+        </section>
+
+        <section class="button-group">
+            <button class= "buttons button-cancel" [routerLink]="['/dashboard']">Cancel</button>
+            <button class="buttons button-save" type="submit" [ngClass]="{'button-disabled': contactForm.invalid}"   [disabled]="contactForm.invalid">{{getContactButtonForm()}}</button>
+        </section>
+    </form>
+
+</section>

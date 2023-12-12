@@ -35,7 +35,14 @@
     display: flex;
     gap: 20px;
 
+    & button{
+      background: none;
+      border: none;
+    }
+
     & svg {
+      background: none;
+      border: none;
         height: 30px;
     }
 

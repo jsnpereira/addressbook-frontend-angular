@@ -18,4 +18,12 @@ export class ContactService {
       error => error
     )
   }
+
+  getContactById(token: string,id: any):Observable<any> {
+    const headers = { 'Authorization': 'Bearer '+token }
+    return this.http.get(this.url +'/contacts/'+id,{headers}).pipe(
+      res => res,
+      error => error
+    )
+  }
 }
