@@ -9,9 +9,7 @@ import {SignupModule} from "./modules/signup/signup.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {SharedModule} from "./shared/shared.module";
 import {DashboardModule} from "./modules/dashboard/dashboard.module";
-import { EditContactComponent } from './modules/edit-contact/edit-contact.component';
-
-
+import { EditContactComponent } from './modules/edit-contract/page/edit-contact/edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +27,8 @@ import { EditContactComponent } from './modules/edit-contact/edit-contact.compon
     SharedModule
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

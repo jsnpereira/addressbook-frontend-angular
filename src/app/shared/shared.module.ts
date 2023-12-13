@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
+import {AppModule} from "../app.module";
 
 
 
@@ -19,7 +20,7 @@ import {RouterModule} from "@angular/router";
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule,
+        RouterModule
     ]
 })
 export class SharedModule { }

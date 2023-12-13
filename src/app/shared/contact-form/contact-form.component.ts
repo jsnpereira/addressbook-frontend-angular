@@ -1,6 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ContactService} from "../../core/service/contact/contact.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {DataService} from "../../core/utils/data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'contact-form',
@@ -11,6 +13,8 @@ export class ContactFormComponent implements OnInit, OnChanges {
   private phonePattern: any = '(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})';
   @Input() contact: any;
   @Input() formType: String = '';
+  private data: any;
+  private changedValue: boolean = false;
 
   // @ts-ignore
   public contactForm: FormGroup = this.formBuilder.group(
@@ -22,11 +26,15 @@ export class ContactFormComponent implements OnInit, OnChanges {
       }
   );
 
-  constructor(private contactService: ContactService, private formBuilder: FormBuilder) {
+  constructor(private dataService: DataService,
+              private contactService: ContactService,
+              private formBuilder: FormBuilder,
+              private router: Router) {
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+      console.log(this.contact);
       this.setUpValuesForms('name');
       this.setUpValuesForms('email');
       this.setUpValuesForms('phone');
@@ -34,11 +42,15 @@ export class ContactFormComponent implements OnInit, OnChanges {
     }
 
   ngOnInit(): void {
+    this.data = this.dataService.getDataClient();
+  }
 
+  private getValueByContact(attribute:string) : string {
+    return (this.contact[attribute] ? this.contact[attribute] : null)
   }
 
   setUpValuesForms(attribute:string ){
-    this.contactForm.get(attribute)?.setValue(this.contact[attribute]);
+    this.contactForm.get(attribute)?.setValue(this.getValueByContact(attribute));
   }
   getContactTitleForm():String{
     if(this.formType == 'new'){
@@ -69,8 +81,22 @@ export class ContactFormComponent implements OnInit, OnChanges {
   }
 
   submitContactDate(){
-
+    if (this.formType == 'edit'){
+      this.updateContact();
+    }
   }
+
+  private updateContact(){
+    if(this.contactForm.valid) {
+        this.contactService.updateContact(this.data.token, this.contact.id, this.contactForm.value)
+            .subscribe( res => {
+                   if(res.success){
+                     this.router.navigate(['dashboard']);
+                   }
+             })
+    }
+  }
+
 
   checkNameField() {
       return this.checkField('name');
@@ -133,5 +159,13 @@ export class ContactFormComponent implements OnInit, OnChanges {
     return null;
   }
 
+  public checkStatusSaveButton(): boolean {
+    return this.contactForm.invalid || !this.changedValue;
+  }
+
+
+  public checkChangeValue(attribute: string){
+    this.changedValue = this.contactForm.controls[attribute].value != this.getValueByContact(attribute);
+  }
 
 }
