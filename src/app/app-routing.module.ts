@@ -4,7 +4,7 @@ import {LoginComponent} from "./modules/login/pages/login/login.component";
 import {SignupComponent} from "./modules/signup/pages/signup/signup.component";
 import * as url from "url";
 import {DashboardComponent} from "./modules/dashboard/pages/dashboard/dashboard.component";
-import {EditContactComponent} from "./modules/edit-contact/edit-contact.component";
+import {EditContactComponent} from "./modules/edit-contract/page/edit-contact/edit-contact.component";
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
