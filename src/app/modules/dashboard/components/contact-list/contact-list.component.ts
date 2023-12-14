@@ -15,11 +15,23 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = this.dataService.getDataClient();
-     console.log('Token: '+this.data.token)
       this.contactService.getAllContactsByUsername(this.data.token).forEach((contact) => {
-        console.log(contact);
         this.contactsList = contact.data;
-        console.log(this.contactsList)
       });
+  }
+
+
+  deleteContactList(id: string){
+      this.contactService.deleteContact(this.data.token, id).subscribe(
+          (res) =>{
+              if (res.success){
+                  this.updateContactList(id);
+              }
+          }
+      )
+  }
+
+  private updateContactList(id: string){
+      this.contactsList = this.contactsList.filter((contact: { _id: string; }) => contact._id != id);
   }
 }
