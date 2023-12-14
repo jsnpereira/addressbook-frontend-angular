@@ -1,5 +1,8 @@
 <section class="contact-list-container">
    <ng-template ngFor let-data [ngForOf]="contactsList">
-    <contact-card [contact]="data"></contact-card>
+    <contact-card
+            [contact]="data"
+            (deleteContactId)="deleteContactList($event)"
+    ></contact-card>
   </ng-template>
 </section>

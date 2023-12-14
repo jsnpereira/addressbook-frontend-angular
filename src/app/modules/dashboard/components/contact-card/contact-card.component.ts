@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'contact-card',
@@ -8,8 +7,13 @@ import {Router} from "@angular/router";
 })
 export class ContactCardComponent implements OnInit {
   @Input() contact: any;
-  constructor( private router: Router) { }
+  @Output() deleteContactId = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit(): void {
+  }
+  deleteButton(id: string): void {
+    this.deleteContactId.emit(id);
   }
 }
