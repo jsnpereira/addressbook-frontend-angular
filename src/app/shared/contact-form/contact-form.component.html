@@ -1,10 +1,10 @@
+<section class="contact-container">
 <section class="contact-form-card">
-    <h1>{{getContactTitleForm()}}</h1>
+    <h1>{{titleForm}}</h1>
     <form class="form-section" [formGroup]="contactForm" (ngSubmit)="submitContactDate()" >
         <section class="item-form-section" >
             <label class="item-label">Name</label>
-            <input type="text" placeholder="Insert name" formControlName="name" (change)="checkChangeValue('name')"  *ngIf="checkEditForm()" />
-            <input type="text" placeholder="Insert name" formControlName="name"  *ngIf="checkNewForm()" />
+            <input type="text" placeholder="Insert name" formControlName="name" (change)="checkChangeValue('name')" />
             <section class="alert-message">
                                 <label *ngIf="checkNameField()">
                                     {{getNameErrorMessage()}}
@@ -13,8 +13,7 @@
         </section>
         <section class="item-form-section">
             <label class="item-label">E-mail</label>
-            <input type="email" placeholder="Insert the email" formControlName="email" (change)="checkChangeValue('email')" *ngIf="checkEditForm()"/>
-            <input type="email" placeholder="Insert the email" formControlName="email" *ngIf="checkNewForm()" />
+            <input type="email" placeholder="Insert the email" formControlName="email" (change)="checkChangeValue('email')" />
             <section class="alert-message">
                                 <label *ngIf="checkEmailField()" >
                                     {{getEmailErrorMessage()}}
@@ -23,8 +22,7 @@
         </section>
         <section class="item-form-section">
             <label class="item-label">Phone</label>
-            <input type="text" placeholder="Insert the Phone" formControlName="phone" (change)="checkChangeValue('phone')"  *ngIf="checkEditForm()"/>
-            <input type="text" placeholder="Insert the Phone" formControlName="phone" *ngIf="checkNewForm()"/>
+            <input type="text" placeholder="Insert the Phone" formControlName="phone" (change)="checkChangeValue('phone')" />
             <section class="alert-message">
                                 <label *ngIf="checkPhoneField()" >
                                     {{getPhoneErrorMessage()}}
@@ -33,8 +31,7 @@
         </section>
         <section class="item-form-section">
             <label class="item-label">City</label>
-            <input type="text" placeholder="Insert the city" formControlName="city" (change)="checkChangeValue('city')" *ngIf="checkEditForm()"/>
-            <input type="text" placeholder="Insert the city" formControlName="city" *ngIf="checkNewForm()"/>
+            <input type="text" placeholder="Insert the city" formControlName="city" (change)="checkChangeValue('city')" />
             <section class="alert-message">
                                 <label *ngIf="checkCityField()" >
                                     {{getCityErrorMessage()}}
@@ -48,8 +45,8 @@
                     type="submit"
                     [ngClass]="{'button-disabled': checkStatusSaveButton()}"
                     [disabled]="checkStatusSaveButton()">
-                {{getContactButtonForm()}}</button>
+                {{buttonName}}</button>
         </section>
     </form>
-
+</section>
 </section>
