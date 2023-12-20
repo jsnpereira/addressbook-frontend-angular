@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ContactService} from "../../../../core/service/contact/contact.service";
 import {DataService} from "../../../../core/utils/data.service";
 
@@ -16,7 +16,8 @@ export class EditContactComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private contactService: ContactService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private router: Router) {
    this.contactId = this.activatedRoute.snapshot.params['editId'];
 
   }
@@ -26,6 +27,16 @@ export class EditContactComponent implements OnInit {
     this.contactService.getContactById(this.data.token, this.contactId).subscribe( response => {
       this.contact = response.data;
     })
+  }
+
+  public saveEditContact(contactData:any){
+    console.log("saveEditContact: "+JSON.stringify(contactData))
+        this.contactService.updateContact(this.data.token, this.contact.id, contactData)
+          .subscribe( res => {
+            if(res.success){
+              this.router.navigate(['dashboard']);
+            }
+          })
   }
 
 }

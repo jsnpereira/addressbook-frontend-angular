@@ -1,8 +1,10 @@
 <section class="edit-contact-container">
     <contact-form
+            titleForm="Edit the contact"
+            buttonName="Save the contact"
             [contact]="contact"
-            [formType]="editContact"
-            ></contact-form>
+            (formContact)="saveEditContact($event)"
+    ></contact-form>
 </section>
 
 

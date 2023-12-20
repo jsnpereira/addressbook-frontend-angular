@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ContactService} from "../../core/service/contact/contact.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DataService} from "../../core/utils/data.service";
@@ -12,8 +12,9 @@ import {Router} from "@angular/router";
 export class ContactFormComponent implements OnInit, OnChanges {
   private phonePattern: any = '(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})';
   @Input() contact: any;
-  @Input() formType: String = '';
-  private data: any;
+  @Input() titleForm: string='';
+  @Input() buttonName: String = '';
+  @Output() formContact = new EventEmitter<string>();
   private changedValue: boolean = false;
 
   // @ts-ignore
@@ -26,11 +27,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
       }
   );
 
-  constructor(private dataService: DataService,
-              private contactService: ContactService,
-              private formBuilder: FormBuilder,
-              private router: Router) {
-
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,7 +39,6 @@ export class ContactFormComponent implements OnInit, OnChanges {
     }
 
   ngOnInit(): void {
-    this.data = this.dataService.getDataClient();
   }
 
   private getValueByContact(attribute:string) : string {
@@ -52,51 +48,12 @@ export class ContactFormComponent implements OnInit, OnChanges {
   setUpValuesForms(attribute:string ){
     this.contactForm.get(attribute)?.setValue(this.getValueByContact(attribute));
   }
-  getContactTitleForm():String{
-    if(this.formType == 'new'){
-      return 'Create new contact'
-    } else if (this.formType == 'edit'){
-      return 'Edit the contact';
-    } else {
-      return '';
-    }
-  }
-
-  getContactButtonForm():String{
-    if(this.formType == 'new'){
-      return 'Create new contact'
-    } else if (this.formType == 'edit'){
-      return 'Save the contact';
-    } else {
-      return '';
-    }
-  }
-
-  checkEditForm(): boolean {
-    return this.formType == 'edit'
-  }
-
-  checkNewForm(): boolean {
-    return this.formType == 'new'
-  }
 
   submitContactDate(){
-    if (this.formType == 'edit'){
-      this.updateContact();
-    }
-  }
-
-  private updateContact(){
+    console.log('submitContactDate'+this.contactForm.value);
     if(this.contactForm.valid) {
-        this.contactService.updateContact(this.data.token, this.contact.id, this.contactForm.value)
-            .subscribe( res => {
-                   if(res.success){
-                     this.router.navigate(['dashboard']);
-                   }
-             })
-    }
-  }
-
+      this.formContact.emit(this.contactForm.value);
+    }}
 
   checkNameField() {
       return this.checkField('name');
@@ -162,7 +119,6 @@ export class ContactFormComponent implements OnInit, OnChanges {
   public checkStatusSaveButton(): boolean {
     return this.contactForm.invalid || !this.changedValue;
   }
-
 
   public checkChangeValue(attribute: string){
     this.changedValue = this.contactForm.controls[attribute].value != this.getValueByContact(attribute);
