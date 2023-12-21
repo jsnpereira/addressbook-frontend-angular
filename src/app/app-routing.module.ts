@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./pages/login/page/login/login.component";
 import {SignupComponent} from "./pages/signup/page/signup/signup.component";
 import * as url from "url";
-import {DashboardComponent} from "./pages/dashboard/page/dashboard/dashboard.component";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {EditContactComponent} from "./pages/edit-contract/page/edit-contact/edit-contact.component";
 import {NewContactComponent} from "./pages/new-contact/page/new-contact/new-contact.component";
 

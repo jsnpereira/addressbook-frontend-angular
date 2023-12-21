@@ -12,7 +12,6 @@ export class EditContactComponent implements OnInit {
   private data: any;
   contactId: String;
   contact: any;
-  editContact: string = 'edit';
 
   constructor(private activatedRoute: ActivatedRoute,
               private contactService: ContactService,
