@@ -7,7 +7,6 @@ import {LoginModule} from "./pages/login/login.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SignupModule} from "./pages/signup/signup.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {EditContractModule} from "./pages/edit-contract/edit-contract.module";
 import {NewContactModule} from "./pages/new-contact/new-contact.module";
 import {CoreModule} from "./core/core.module";
 import {PagesModule} from "./pages/pages.module";
@@ -25,7 +24,6 @@ import {PagesModule} from "./pages/pages.module";
     LoginModule,
     SignupModule,
     NoopAnimationsModule,
-    EditContractModule,
     NewContactModule,
   ],
   providers: [],

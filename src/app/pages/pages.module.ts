@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {SharedModule} from "../shared/shared.module";
+import {EditContactComponent} from "./edit-contract/edit-contact.component";
 
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [
+    DashboardComponent,
+    EditContactComponent
+  ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    EditContactComponent
   ],
   imports: [
     CommonModule,

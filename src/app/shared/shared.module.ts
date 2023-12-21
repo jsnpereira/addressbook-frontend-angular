@@ -6,8 +6,6 @@ import {RouterModule} from "@angular/router";
 import {ContactCardComponent} from "./contact-card/contact-card.component";
 import {ContactListComponent} from "./contact-list/contact-list.component";
 
-
-
 @NgModule({
   declarations: [
     ContactFormComponent,

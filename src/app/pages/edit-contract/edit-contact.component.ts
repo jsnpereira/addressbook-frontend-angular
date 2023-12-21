@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ContactService} from "../../../../core/service/contact/contact.service";
-import {DataService} from "../../../../core/utils/data.service";
+import {ContactService} from "../../core/service/contact/contact.service";
+import {DataService} from "../../core/utils/data.service";
 
 @Component({
   selector: 'edit-contact',
