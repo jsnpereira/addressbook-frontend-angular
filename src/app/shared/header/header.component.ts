@@ -21,6 +21,14 @@ export class HeaderComponent implements OnInit {
     console.log(data);
   }
 
+  newContactButton(){
+    this.router.navigate(['newContact']).then( nav =>{
+      console.log(nav)
+    }, error => {
+      console.log(error)
+    })
+  }
+
   logoutUsername(){
     this.dataService.logoutUsername();
     this.router.navigate(['login']).then( nav =>{

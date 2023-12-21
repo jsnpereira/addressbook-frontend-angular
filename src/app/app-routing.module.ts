@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from "./modules/login/pages/login/login.component";
-import {SignupComponent} from "./modules/signup/pages/signup/signup.component";
+import {LoginComponent} from "./pages/login/page/login/login.component";
+import {SignupComponent} from "./pages/signup/page/signup/signup.component";
 import * as url from "url";
-import {DashboardComponent} from "./modules/dashboard/pages/dashboard/dashboard.component";
-import {EditContactComponent} from "./modules/edit-contract/page/edit-contact/edit-contact.component";
+import {DashboardComponent} from "./pages/dashboard/page/dashboard/dashboard.component";
+import {EditContactComponent} from "./pages/edit-contract/page/edit-contact/edit-contact.component";
+import {NewContactComponent} from "./pages/new-contact/page/new-contact/new-contact.component";
 
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch: 'full'},
   {path:'login', component: LoginComponent},
   {path:'signup', component: SignupComponent},
   {path:'dashboard', component:DashboardComponent},
-  {path: 'editContact/:editId', component: EditContactComponent}
+  {path: 'editContact/:editId', component: EditContactComponent},
+  {path: 'newContact', component: NewContactComponent}
 ];
 
 @NgModule({

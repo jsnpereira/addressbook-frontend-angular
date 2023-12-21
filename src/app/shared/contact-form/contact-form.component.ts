@@ -13,7 +13,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
   private phonePattern: any = '(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})';
   @Input() contact: any;
   @Input() titleForm: string='';
-  @Input() buttonName: String = '';
+  @Input() buttonName: string = '';
   @Output() formContact = new EventEmitter<string>();
   private changedValue: boolean = false;
 
