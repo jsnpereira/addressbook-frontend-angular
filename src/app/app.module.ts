@@ -20,8 +20,6 @@ import {PagesModule} from "./pages/pages.module";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    LoginModule,
-    SignupModule,
     NoopAnimationsModule,
   ],
   providers: [],

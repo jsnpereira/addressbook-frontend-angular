@@ -5,6 +5,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {SharedModule} from "../shared/shared.module";
 import {EditContactComponent} from "./edit-contract/edit-contact.component";
 import {NewContactComponent} from "./new-contact/new-contact.component";
+import {SignupModule} from "./signup/signup.module";
+import {LoginModule} from "./login/login.module";
 
 
 
@@ -23,7 +25,9 @@ import {NewContactComponent} from "./new-contact/new-contact.component";
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    SignupModule,
+    LoginModule
   ]
 })
 export class PagesModule { }
