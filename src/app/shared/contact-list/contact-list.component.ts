@@ -20,6 +20,14 @@ export class ContactListComponent implements OnInit {
       });
   }
 
+  getListBySearchValue(value: String){
+    console.log("=========================================");
+      this.contactService.searchContact(this.data.token, value).forEach((contact) => {
+        console.log(contact);
+      })
+    console.log("=========================================");
+  }
+
 
   deleteContactList(id: string){
       this.contactService.deleteContact(this.data.token, id).subscribe(

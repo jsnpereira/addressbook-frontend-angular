@@ -36,12 +36,18 @@ export class ContactService {
   }
 
   deleteContact(token: string, id: any) :Observable<any>{
-    console.log('Token: '+ token);
-    console.log('Contact id: '+ id);
     const headers = { 'Authorization': 'Bearer '+token }
     return this.http.delete(this.url +'/contacts/'+id, {headers}).pipe(
         res => res,
         error => error
+    )
+  }
+
+  searchContact(token: string, value: any): Observable<any>{
+    const headers = { 'Authorization': 'Bearer '+token }
+    return this.http.get(this.url +'/contacts/search?key='+value,{headers}).pipe(
+      res => res,
+      error => error
     )
   }
 }
