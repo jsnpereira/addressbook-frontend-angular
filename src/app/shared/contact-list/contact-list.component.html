@@ -1,5 +1,6 @@
+<search-contact (searchValue)="getListBySearchValue($event)"></search-contact>
 <section class="contact-list-container">
-   <ng-template ngFor let-data [ngForOf]="contactsList">
+   <ng-template ngFor let-data [ngForOf]="getContactsList">
     <contact-card
             [contact]="data"
             (deleteContactId)="deleteContactList($event)"
