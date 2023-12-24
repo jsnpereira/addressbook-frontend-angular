@@ -5,17 +5,20 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {ContactCardComponent} from "./contact-card/contact-card.component";
 import {ContactListComponent} from "./contact-list/contact-list.component";
+import {SearchContactComponent} from "./search-contact/search-contact.component";
 
 @NgModule({
   declarations: [
     ContactFormComponent,
     ContactCardComponent,
-    ContactListComponent
+    ContactListComponent,
+    SearchContactComponent
   ],
     exports: [
         ContactCardComponent,
         ContactFormComponent,
-        ContactListComponent
+        ContactListComponent,
+      SearchContactComponent
     ],
     imports: [
         CommonModule,
