@@ -35,6 +35,14 @@ export class ContactService {
     )
   }
 
+  saveContact(token: string, contact: any) :Observable<any>{
+    const headers = { 'Authorization': 'Bearer '+token }
+    return this.http.post(this.url +'/contacts/',contact,{headers}).pipe(
+      res => res,
+      error => error
+    )
+  }
+
   deleteContact(token: string, id: any) :Observable<any>{
     const headers = { 'Authorization': 'Bearer '+token }
     return this.http.delete(this.url +'/contacts/'+id, {headers}).pipe(

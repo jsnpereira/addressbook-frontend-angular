@@ -16,6 +16,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
   @Input() buttonName: string = '';
   @Output() formContact = new EventEmitter<string>();
   private changedValue: boolean = false;
+  private ignoredCheckChangeValues = false;
 
   // @ts-ignore
   public contactForm: FormGroup = this.formBuilder.group(
@@ -31,19 +32,19 @@ export class ContactFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+     console.log('ngOnChanges: '+JSON.stringify(this.contact))
       if(this.contact != undefined){
         this.setUpValuesForms('name');
         this.setUpValuesForms('email');
         this.setUpValuesForms('phone');
         this.setUpValuesForms('city');
+      } else {
+        this.changedValue = true;
+        this.ignoredCheckChangeValues = true;
       }
     }
 
   ngOnInit(): void {
-    console.log("===============================")
-    console.log(this.titleForm);
-    console.log(this.buttonName);
-    console.log("===============================")
   }
 
   private checkContactHasValue(attribute:string): boolean {
@@ -61,7 +62,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
   }
 
   submitContactDate(){
-    console.log('submitContactDate'+this.contactForm.value);
+    console.log('submitContactDate: '+this.contactForm.value);
     if(this.contactForm.valid) {
       this.formContact.emit(this.contactForm.value);
     }}
@@ -132,7 +133,9 @@ export class ContactFormComponent implements OnInit, OnChanges {
   }
 
   public checkChangeValue(attribute: string){
-    this.changedValue = this.contactForm.controls[attribute].value != this.getValueByContact(attribute);
+    if(!this.ignoredCheckChangeValues) {
+      this.changedValue = this.contactForm.controls[attribute].value != this.getValueByContact(attribute);
+    }
   }
 
 }

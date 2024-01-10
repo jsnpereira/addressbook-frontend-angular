@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationStart, Router} from "@angular/router";
+import {ContactService} from "../../core/service/contact/contact.service";
+import {DataService} from "../../core/utils/data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'new-contact',
@@ -7,16 +9,23 @@ import {NavigationStart, Router} from "@angular/router";
   styleUrls: ['./new-contact.component.scss']
 })
 export class NewContactComponent implements OnInit {
-  constructor(private router: Router) {
-    router.events.forEach((event) => {
-      if (event instanceof NavigationStart) {
-        console.log(event.url);
-      }
-    });
+  private data: any;
+  constructor(private contactService: ContactService,
+              private dataService: DataService,
+              private router: Router) {
+
   }
 
   ngOnInit(): void {
+    this.data = this.dataService.getDataClient();
+  }
 
+
+  saveNewContact(contact: any){
+     console.log('Save new contact: '+JSON.stringify(contact));
+     this.contactService.saveContact(this.data.token, contact).subscribe( response => {
+       console.log(response.data);
+     })
   }
 
 }
