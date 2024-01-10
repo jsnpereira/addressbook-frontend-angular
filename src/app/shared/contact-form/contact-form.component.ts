@@ -31,22 +31,33 @@ export class ContactFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      console.log(this.contact);
-      this.setUpValuesForms('name');
-      this.setUpValuesForms('email');
-      this.setUpValuesForms('phone');
-      this.setUpValuesForms('city');
+      if(this.contact != undefined){
+        this.setUpValuesForms('name');
+        this.setUpValuesForms('email');
+        this.setUpValuesForms('phone');
+        this.setUpValuesForms('city');
+      }
     }
 
   ngOnInit(): void {
+    console.log("===============================")
+    console.log(this.titleForm);
+    console.log(this.buttonName);
+    console.log("===============================")
+  }
+
+  private checkContactHasValue(attribute:string): boolean {
+    return (this.contact[attribute]);
   }
 
   private getValueByContact(attribute:string) : string {
-    return (this.contact[attribute] ? this.contact[attribute] : null)
+    return (this.contact[attribute] ? this.contact[attribute] : undefined)
   }
 
   setUpValuesForms(attribute:string ){
-    this.contactForm.get(attribute)?.setValue(this.getValueByContact(attribute));
+    if(this.checkContactHasValue(attribute)){
+        this.contactForm.get(attribute)?.setValue(this.getValueByContact(attribute));
+    }
   }
 
   submitContactDate(){
