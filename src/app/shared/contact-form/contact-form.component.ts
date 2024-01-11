@@ -16,6 +16,7 @@ export class ContactFormComponent implements OnInit, OnChanges {
   @Input() buttonName: string = '';
   @Output() formContact = new EventEmitter<string>();
   private changedValue: boolean = false;
+  private isEditContactData: boolean | undefined;
   private ignoredCheckChangeValues = false;
 
   // @ts-ignore
@@ -38,9 +39,9 @@ export class ContactFormComponent implements OnInit, OnChanges {
         this.setUpValuesForms('email');
         this.setUpValuesForms('phone');
         this.setUpValuesForms('city');
+        this.isEditContactData = true;
       } else {
-        this.changedValue = true;
-        this.ignoredCheckChangeValues = true;
+        this.isEditContactData = false;
       }
     }
 
@@ -129,11 +130,15 @@ export class ContactFormComponent implements OnInit, OnChanges {
   }
 
   public checkStatusSaveButton(): boolean {
-    return this.contactForm.invalid || !this.changedValue;
+    if(this.isEditContactData){
+      return this.contactForm.invalid || !this.changedValue;
+    } else {
+      return this.contactForm.invalid;
+    }
   }
 
   public checkChangeValue(attribute: string){
-    if(!this.ignoredCheckChangeValues) {
+    if(this.isEditContactData) {
       this.changedValue = this.contactForm.controls[attribute].value != this.getValueByContact(attribute);
     }
   }
