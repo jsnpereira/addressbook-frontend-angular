@@ -23,13 +23,6 @@ export class ContactListComponent implements OnInit {
   }
 
   getListBySearchValue(value: String){
-    // this server wasn't working well and it was broken.
-    // console.log("=========================================");
-    //   this.contactService.searchContact(this.data.token, value).forEach((contact) => {
-    //     console.log(contact);
-    //   })
-    // console.log("=========================================");
-
       this.getContactsList = this.setContactsList.filter((res: any) => {
         return !res.name.toLowerCase().indexOf(value.toLowerCase());
     });
@@ -46,9 +39,18 @@ export class ContactListComponent implements OnInit {
       )
   }
 
+  checkEmptyList(): boolean {
+     if( this.getContactsList.length <= 0){
+        return true;
+     } else {
+       return  false;
+     }
+  }
+
   private updateContactList(id: string){
       this.setContactsList = this.setContactsList.filter((contact: { _id: string; }) => contact._id != id);
       this.getContactsList = this.setContactsList;
 
   }
+
 }
