@@ -24,7 +24,9 @@ export class NewContactComponent implements OnInit {
   saveNewContact(contact: any){
      console.log('Save new contact: '+JSON.stringify(contact));
      this.contactService.saveContact(this.data.token, contact).subscribe( response => {
-       console.log(response.data);
+       if(response.success){
+         this.router.navigate(['dashboard']);
+       }
      })
   }
 
